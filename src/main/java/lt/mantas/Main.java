@@ -44,7 +44,6 @@ public class Main {
             double z = 0;
             for (Pazymiai p : list){
                 double y = p.getPazymys();
-                System.out.println(y);
                 z += y;
             }
             double vidurkis = z / list.size();
