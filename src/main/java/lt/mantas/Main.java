@@ -48,7 +48,6 @@ public class Main {
             }
             double vidurkis = z / list.size();
             System.out.println(vidurkis);
-            System.out.println(z);
 
             em.getTransaction().commit();
         } catch (Exception e) {
