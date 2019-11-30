@@ -41,13 +41,16 @@ public class Main {
             em.getTransaction().begin();
 
             List<Pazymiai> list = em.createQuery("from Pazymiai").getResultList();
-            int z = 0;
+            double z = 0;
             for (Pazymiai p : list){
-                int y = p.getPazymys();
+                double y = p.getPazymys();
                 System.out.println(y);
                 z += y;
             }
+            double vidurkis = z / list.size();
             System.out.println(z);
+            System.out.println(vidurkis);
+            System.out.println(list.size());
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
