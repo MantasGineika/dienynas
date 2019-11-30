@@ -1,28 +1,57 @@
 package lt.mantas;
 
+import lt.mantas.entities.Pazymiai;
 import lt.mantas.entities.Studentas;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
-        EntityManager em = HibernateUtils.getEntityManager();
-//        Studentas st = em.
-//        System.out.println(st);
-//        em.createQuery("SELECT a FROM Studentas a", Studentas.class).getResultList();
-
-
-
+//        grazintiDuomenis();
+        kursoVidurkis();
 
     }
 
 
+    public static void grazintiDuomenis() {
+        EntityManager em = HibernateUtils.getEntityManager();
+        try {
+            em.getTransaction().begin();
 
-    public void grazintiDuomenis() {
+//            List<Studentas> list = new ArrayList<>();
+//            Studentas std = em.find(Studentas.class,2);
+//            Studentas std1 = em.find(Studentas.class,1);
+//            list.add(std);
+//            list.add(std1);
+
+            List<Studentas> list = em.createQuery("from Studentas ORDER BY pavarde, vardas ASC").getResultList();
+            System.out.println(list);
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    public static void kursoVidurkis(){
+        int x = 0;
+        EntityManager em = HibernateUtils.getEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            List<Pazymiai> list = em.createQuery("from Pazymiai").getResultList();
+            int z = 0;
+            for (Pazymiai p : list){
+                int y = p.getPazymys();
+                System.out.println(y);
+                z += y;
+            }
+            System.out.println(z);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -15,4 +15,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.8.Final'
+    // https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
+    compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.1.7'
+
 }
