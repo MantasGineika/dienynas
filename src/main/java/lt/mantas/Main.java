@@ -4,12 +4,15 @@ import lt.mantas.entities.Pazymiai;
 import lt.mantas.entities.Studentas;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
 //        grazintiDuomenis();
-        kursoVidurkis();
+//        kursoVidurkis();
+        grazintiStudenta(2);
 
     }
 
@@ -47,8 +50,24 @@ public class Main {
                 z += y;
             }
             double vidurkis = z / list.size();
-            System.out.println(vidurkis);
-            System.out.println(z);
+            System.out.println("Kurso vidurkis yra: " + vidurkis);
+
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void grazintiStudenta(int id){
+        EntityManager em = HibernateUtils.getEntityManager();
+        try {
+            em.getTransaction().begin();
+
+            List<Studentas> list = new ArrayList<>();
+            Studentas std = em.find(Studentas.class,id);
+            list.add(std);
+
+            System.out.println(std);
 
             em.getTransaction().commit();
         } catch (Exception e) {
