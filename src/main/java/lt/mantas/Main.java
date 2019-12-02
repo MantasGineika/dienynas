@@ -10,9 +10,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-//        grazintiDuomenis();
+        grazintiDuomenis();
 //        kursoVidurkis();
-        grazintiStudenta(2);
+//        grazintiStudenta(2);
 
     }
 
@@ -37,15 +37,15 @@ public class Main {
         }
     }
 
-    public static void kursoVidurkis(){
-        int x = 0;
+    public static void kursoVidurkis() {
         EntityManager em = HibernateUtils.getEntityManager();
         try {
             em.getTransaction().begin();
 
             List<Pazymiai> list = em.createQuery("from Pazymiai").getResultList();
+            //pabandyti su collection streamu
             double z = 0;
-            for (Pazymiai p : list){
+            for (Pazymiai p : list) {
                 double y = p.getPazymys();
                 z += y;
             }
@@ -58,13 +58,13 @@ public class Main {
         }
     }
 
-    public static void grazintiStudenta(int id){
+    public static void grazintiStudenta(int id) {
         EntityManager em = HibernateUtils.getEntityManager();
         try {
             em.getTransaction().begin();
 
             List<Studentas> list = new ArrayList<>();
-            Studentas std = em.find(Studentas.class,id);
+            Studentas std = em.find(Studentas.class, id);
             list.add(std);
 
             System.out.println(std);
