@@ -68,6 +68,14 @@ public class Studentas {
         this.elPastas = elPastas;
     }
 
+    public List<Pazymiai> getPazymiai() {
+        return pazymiai;
+    }
+
+    public void setPazymiai(List<Pazymiai> pazymiai) {
+        this.pazymiai = pazymiai;
+    }
+
     @Override
     public String toString() {
         return "Studentas{" +

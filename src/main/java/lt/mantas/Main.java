@@ -6,13 +6,15 @@ import lt.mantas.entities.Studentas;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
 
         grazintiDuomenis();
 //        kursoVidurkis();
-//        grazintiStudenta(2);
+//        grazintiStudenta(1);
 
     }
 
@@ -28,8 +30,11 @@ public class Main {
 //            list.add(std);
 //            list.add(std1);
 
-            List<Studentas> list = em.createQuery("from Studentas ORDER BY pavarde, vardas ASC").getResultList();
-            System.out.println(list);
+            List<Studentas> list = em.createQuery("from Studentas s").getResultList();
+            list.stream()
+                    .filter(studentas -> studentas.getId() == 1)
+                    .forEach(studentas -> System.out.println(studentas.getVardas() + " " + studentas.getPazymiai()));
+
 
             em.getTransaction().commit();
         } catch (Exception e) {
