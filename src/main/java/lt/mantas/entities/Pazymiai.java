@@ -21,7 +21,7 @@ public class Pazymiai {
     private LocalDate data;
 
     @Column(name = "pazymys")
-    private int pazymys;
+    private Integer pazymys;
 
     public Pazymiai() {
     }
@@ -56,11 +56,11 @@ public class Pazymiai {
         this.data = data;
     }
 
-    public int getPazymys() {
+    public Integer getPazymys() {
         return pazymys;
     }
 
-    public void setPazymys(int pazymys) {
+    public void setPazymys(Integer pazymys) {
         this.pazymys = pazymys;
     }
 
