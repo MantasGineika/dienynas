@@ -1,7 +1,5 @@
 package lt.mantas.entities;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,42 +8,45 @@ import java.time.LocalDate;
 public class Pazymiai {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "pazymys")
+    private int pazymys;
 
     @Column(name = "studentas_id")
-    private int studentasId;
+    private int studentas_id;
 
     @Column(name = "data")
     private LocalDate data;
 
-    @Column(name = "pazymys")
-    private Integer pazymys;
-
     public Pazymiai() {
     }
 
-    public Pazymiai(int studentasId, LocalDate data, int pazymys) {
-        this.studentasId = studentasId;
-        this.data = data;
-        this.pazymys = pazymys;
-    }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getStudentasId() {
-        return studentasId;
+    public int getPazymys() {
+        return pazymys;
     }
 
-    public void setStudentasId(int studentasId) {
-        this.studentasId = studentasId;
+    public void setPazymys(int pazymys) {
+        this.pazymys = pazymys;
+    }
+
+    public int getStudentas_id() {
+        return studentas_id;
+    }
+
+    public void setStudentas_id(int studentas_id) {
+        this.studentas_id = studentas_id;
     }
 
     public LocalDate getData() {
@@ -56,17 +57,13 @@ public class Pazymiai {
         this.data = data;
     }
 
-    public Integer getPazymys() {
-        return pazymys;
-    }
-
-    public void setPazymys(Integer pazymys) {
-        this.pazymys = pazymys;
-    }
-
     @Override
     public String toString() {
-        return "data =" + data +
-                ", pazymys =" + pazymys;
+        return "Pazymiai{" +
+                "id=" + id +
+                ", pazymys=" + pazymys +
+                ", studentas_id=" + studentas_id +
+                ", data=" + data +
+                '}';
     }
 }

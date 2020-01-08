@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <h2>Studentai</h2>
+    </div>
+<input sec:authorize="hasRole('MANAGER')" type="button" value="Add Studentas" onclick="window.location.href='showFormForAdd'; return false;">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="studentas : ${studentas}">
+                <td><a th:href="@{/studentas/getPazymiai/{id}(id=${studentas.id})}" th:text="${studentas.firstName}">Antanas</a></td>
+                <td><a th:href="@{/studentas/getPazymiai/{id}(id=${studentas.id})}" th:text="${studentas.lastName}">Antanaitis</a></td>
+                <td th:text="${studentas.email}">Antanaitis@email.com</td>
+                <td sec:authorize="hasRole('MANAGER')">
+                    <a th:href="@{/studentas/edit/{id}(id=${studentas.id})}">Edit</a>
+                    <a th:href="@{/studentas/delete/{id}(id=${studentas.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

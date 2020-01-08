@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>VEIKIA SECURITY CONTROLLERIS</h1>
+
+<div sec:authorize="hasRole('MANAGER')">Text visible to manager.</div>
+<div sec:authorize="hasRole('EMPLOYEE')">Text visible to employee.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="isAuthenticated()">isauthenticated</div>
+
+<span sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+            </span>
+
+
+<span sec:authorize="hasRole('MANAGER')"><a th:href="@{/destytojai}" >Destytoju puslapis</a></span>
+<span sec:authorize="hasRole('ADMIN')"><a th:href="@{/admins}" >Admin page</a></span>
+
+<form method="POST" action="#" th:action="@{/logout}">
+    <div class="container-login100-form-btn m-t-20">
+        <button class="login100-form-btn">
+            Log Out
+        </button>
+    </div>
+</form>
+
+<a th:href="@{/studentas/list}">Student list</a>
+
+</body>
+</html>

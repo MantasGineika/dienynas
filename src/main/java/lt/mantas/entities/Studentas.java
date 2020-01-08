@@ -1,71 +1,73 @@
 package lt.mantas.entities;
 
+
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate(value = false)
 @Table(name = "studentai")
 public class Studentas {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Integer id;
 
-    @Column(name = "vardas")
-    private String vardas;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "pavarde")
-    private String pavarde;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @Column(name = "el_pastas")
-    private String elPastas;
+    @Column(name = "email")
+    private String email;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "studentas_id")
-    public List<Pazymiai> pazymiai;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "studentas_id", updatable = false)
+    private List<Pazymiai> pazymiai;
 
     public Studentas() {
     }
 
-    public Studentas(String vardas, String pavarde, String elPastas) {
-        this.vardas = vardas;
-        this.pavarde = pavarde;
-        this.elPastas = elPastas;
+    public Studentas(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getVardas() {
-        return vardas;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setVardas(String vardas) {
-        this.vardas = vardas;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPavarde() {
-        return pavarde;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPavarde(String pavarde) {
-        this.pavarde = pavarde;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getElPastas() {
-        return elPastas;
+    public String getEmail() {
+        return email;
     }
 
-    public void setElPastas(String elPastas) {
-        this.elPastas = elPastas;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Pazymiai> getPazymiai() {
@@ -80,10 +82,8 @@ public class Studentas {
     public String toString() {
         return "Studentas{" +
                 "id=" + id +
-                ", vardas='" + vardas + '\'' +
-                ", pavarde='" + pavarde + '\'' +
-                ", elPastas='" + elPastas + '\'' +
-                ", pazymiai=" + pazymiai +
-                '}';
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'';
     }
 }
