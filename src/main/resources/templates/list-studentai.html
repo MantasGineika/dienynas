@@ -12,7 +12,7 @@
     <div>
         <h2>Studentai</h2>
     </div>
-<input sec:authorize="hasRole('MANAGER')" type="button" value="Add Studentas" onclick="window.location.href='showFormForAdd'; return false;">
+<input sec:authorize="hasRole('DESTYTOJAS')" type="button" value="Add Studentas" onclick="window.location.href='showFormForAdd'; return false;">
     <div class="container">
         <table class="table">
             <thead>
@@ -27,7 +27,7 @@
                 <td><a th:href="@{/studentas/getPazymiai/{id}(id=${studentas.id})}" th:text="${studentas.firstName}">Antanas</a></td>
                 <td><a th:href="@{/studentas/getPazymiai/{id}(id=${studentas.id})}" th:text="${studentas.lastName}">Antanaitis</a></td>
                 <td th:text="${studentas.email}">Antanaitis@email.com</td>
-                <td sec:authorize="hasRole('MANAGER')">
+                <td sec:authorize="hasRole('DESTYTOJAS')">
                     <a th:href="@{/studentas/edit/{id}(id=${studentas.id})}">Edit</a>
                     <a th:href="@{/studentas/delete/{id}(id=${studentas.id})}">Delete</a>
                 </td>
