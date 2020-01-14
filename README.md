@@ -1,2 +1,2 @@
 # dienynas
-Kad pilnai veikų aplikacija, duomenų bazėj sukurti naują schemą pavadinimu 'dienynas2'
+For full working application create database schema with name 'dienynas2'
