@@ -29,7 +29,7 @@ INSERT INTO pazymiai VALUES('0','5',now(),'8');
 INSERT INTO pazymiai VALUES('0','5',now(),'10');
 
 
-INSERT INTO users VALUES('jonas','{noop}test','1');
-INSERT INTO users VALUES('marija','{noop}test','1');
-INSERT INTO users VALUES('petras','{noop}test','1');
+INSERT INTO users VALUES('jonas','{bcrypt}$2y$10$3fILcjH8LC/DLb09pyOREucXsi6GltxWvlsVjKcMOcV4N8lhar7Jy','1');
+INSERT INTO users VALUES('marija','{bcrypt}$2y$10$3fILcjH8LC/DLb09pyOREucXsi6GltxWvlsVjKcMOcV4N8lhar7Jy','1');
+INSERT INTO users VALUES('petras','{bcrypt}$2y$10$3fILcjH8LC/DLb09pyOREucXsi6GltxWvlsVjKcMOcV4N8lhar7Jy','1');
 
